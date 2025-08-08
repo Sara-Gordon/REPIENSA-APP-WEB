@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>RePiensa - Tu amiga virtual contra el consumo emocional</title>
+<style>
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #ffeef6;
+    margin: 0;
+    padding: 0;
+  }
+
+  header {
+    background: linear-gradient(90deg, #ff8ebf, #ffb3d9);
+    padding: 1rem;
+    color: white;
+    text-align: center;
+    font-size: 1.6rem;
+    font-weight: bold;
+  }
+
+  nav {
+    background: #ffd3e3;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 0.8rem;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  nav a {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+    background: #fff0f6;
+    padding: 8px 14px;
+    border-radius: 10px;
+    transition: 0.3s;
+  }
+
+  nav a:hover {
+    background: #ff8ebf;
+    color: white;
+  }
+
+  section {
+    padding: 2rem;
+    display: none;
+    animation: fadeIn 0.5s;
+  }
+
+  section.active {
+    display: block;
+  }
+
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+
+  .frase {
+    background: #fff;
+    margin: 1rem 0;
+    padding: 1rem;
+    border-left: 5px solid #ff8ebf;
+    font-style: italic;
+    border-radius: 8px;
+  }
+
+  .actividad textarea {
+    width: 100%;
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+  }
+
+  .actividad button {
+    background: #ff8ebf;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: 0.3s;
+  }
+
+  .actividad button:hover {
+    background: #ff4f92;
+  }
+
+  .chat {
+    background: #fff;
+    border-radius: 10px;
+    padding: 1rem;
+    max-width: 500px;
+    margin: auto;
+    box-shadow: 0 0 10px rgba(255,173,199,0.3);
+  }
+
+  .chat textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+  }
+
+  .chat button {
+    margin-top: 10px;
+    background: #ff8ebf;
+    color: white;
+    padding: 8px 14px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+  ul {
+    padding-left: 20px;
+  }
+
+  ul li {
+    margin: 5px 0;
+  }
+
+  footer {
+    background: #eee;
+    padding: 1rem;
+    text-align: center;
+    margin-top: 3rem;
+    font-size: 14px;
+  }
+</style>
+</head>
+<body>
+<header>🌸 RePiensa: Tu amiga virtual contra el consumo emocional 💭</header>
+
+<nav>
+  <a href="#" onclick="mostrar('inicio')">🏠 Inicio</a>
+  <a href="#" onclick="mostrar('info')">🧠 ¿Qué es?</a>
+  <a href="#" onclick="mostrar('frases')">💬 Frases</a>
+  <a href="#" onclick="mostrar('actividad')">✍️ Actividad</a>
+  <a href="#" onclick="mostrar('chatIA')">🤖 Hablar con IA</a>
+  <a href="#" onclick="mostrar('recursos')">📚 Recursos</a>
+</nav>
+
+<section id="inicio" class="active">
+  <h2>💖 Bienvenido a RePiensa</h2>
+  <p>Una plataforma interactiva que te acompaña en momentos de impulso de compra para ayudarte a reflexionar y cuidar tu bienestar emocional.</p>
+</section>
+
+<section id="info">
+  <h2>🧠 ¿Qué es el sobreconsumo emocional?</h2>
+  <p>Es cuando compramos por impulso motivados por emociones como ansiedad, tristeza o aburrimiento, en lugar de hacerlo por necesidad real.</p>
+</section>
+
+<section id="frases">
+  <h2>💬 Frases para reflexionar</h2>
+  <div class="frase">"🛍️ No compres para llenar vacíos emocionales, llénalos con amor propio."</div>
+  <div class="frase">"🌱 Antes de gastar, respira y pregúntate si lo necesitas."</div>
+  <div class="frase">"💗 El mejor regalo que puedes darte es paz mental, no una bolsa de compras."</div>
+</section>
+
+<section id="actividad">
+  <h2>✍️ Antes de comprar...</h2>
+  <p>Escribe tu motivo y piensa si realmente lo necesitas.</p>
+  <div class="actividad">
+    <textarea placeholder="Escribe aquí tu motivo..."></textarea>
+    <button onclick="alert('💡 Gracias por reflexionar antes de comprar ❤️')">Enviar</button>
+  </div>
+</section>
+
+<section id="chatIA">
+  <h2>🤖 Hablar con tu amiga virtual</h2>
+  <p>Desahógate o cuéntale a tu amiga virtual cómo te sientes.</p>
+  <div class="chat">
+    <textarea id="mensaje" placeholder="Escribe aquí tu mensaje..."></textarea>
+    <button onclick="responderIA()">Enviar</button>
+    <p id="respuestaIA" style="margin-top:10px; font-style:italic; color:#555;"></p>
+  </div>
+</section>
+
+<section id="recursos">
+  <h2>📚 Recursos educativos</h2>
+  <h3>📖 Guías y lecturas</h3>
+  <ul>
+    <li><a href="https://www.vivosano.org/guia-consejos-consumo-responsable/" target="_blank">Guía: Consejos de consumo responsable</a></li>
+    <li><a href="https://rappicard.mx/2024/08/27/psicologia-del-gasto/#:~:text=Aqu%C3%AD..." target="_blank">Psicología del gasto</a></li>
+    <li><a href="https://www.servientrega.com/wps/portal/noticias-y-promociones/noticias/principios-del-consumo-responsable-consejos-para-aplicarlos#:~:text=Consejos..." target="_blank">Principios del consumo responsable</a></li>
+    <li><a href="https://www.naranjax.com/blog/evita-caer-en-los-gastos-emocionales" target="_blank">Evita caer en los gastos emocionales</a></li>
+  </ul>
+  <h3>🎥 Videos</h3>
+  <ul>
+    <li><a href="https://www.youtube.com/watch?v=_7XMZ-nxiJY" target="_blank">Video 1</a></li>
+    <li><a href="https://www.youtube.com/watch?v=MHO3oUExoGE" target="_blank">Video 2</a></li>
+    <li><a href="https://www.youtube.com/watch?v=1lpQmgzFQiQ" target="_blank">Video 3</a></li>
+    <li><a href="https://www.youtube.com/watch?v=WflQFXmxi08" target="_blank">Video 4</a></li>
+    <li><a href="https://www.youtube.com/watch?v=xuU_cCFOFA0&t=80s" target="_blank">Video 5</a></li>
+  </ul>
+</section>
+
+<footer>
+  🌼 Hecho con ❤️ por Sarita | RePiensa 2025
+</footer>
+
+<script>
+function mostrar(seccion) {
+  document.querySelectorAll("section").forEach(s => s.classList.remove("active"));
+  document.getElementById(seccion).classList.add("active");
+}
+
+function responderIA() {
+  const mensaje = document.getElementById("mensaje").value.trim();
+  const respuesta = document.getElementById("respuestaIA");
+  if(mensaje === "") {
+    respuesta.innerText = "💌 Por favor, cuéntame cómo te sientes.";
+  } else {
+    respuesta.innerText = "🌸 Gracias por compartirlo. Recuerda que tus emociones son válidas y puedes tomarte un momento para ti antes de comprar.";
+  }
+}
+</script>
+
+</body>
+</html>
